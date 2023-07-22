@@ -1,5 +1,4 @@
-# cs460PythonInterpreter
-
 # Authors:
     Brennan Freeze
-# Python-Interpreter
+# Python-Compiler
+## A C++ Python Compiler that has type descriptors.
