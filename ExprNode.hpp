@@ -17,33 +17,32 @@
 // evaluate.
 
 class ExprNode {
-public:
-    explicit ExprNode(Token token);
-    Token token();
-    virtual void print() = 0;
-    virtual int evaluate(SymTab &symTab) = 0;
+    public:
+        explicit ExprNode(Token token);
+        Token token();
+        virtual void print() = 0;
+        virtual TypeDescriptor *evaluate(SymTab &symTab) = 0;
+    private:
+        Token _token;
 
-private:
-    Token _token;
-
-protected:
-    bool debug = false;
+    protected:
+        bool debug = false;
 };
 
 
 // An InfixExprNode is useful to represent binary arithmetic operators.
 class InfixExprNode: public ExprNode {  // An expression tree node.
 
-public:
-    explicit InfixExprNode(Token tk);
+    public:
+        explicit InfixExprNode(Token tk);
 
-    ExprNode *&left();
-    ExprNode *&right();
-    void print () override;
-    int evaluate(SymTab &symTab) override;
+        ExprNode *&left();
+        ExprNode *&right();
+        void print () override;
+        TypeDescriptor *evaluate(SymTab &symTab) override;
 
-private:
-    ExprNode *_left, *_right;
+    private:
+        ExprNode *_left, *_right;
 };
 
 // WholeNumber is a leaf-node in an expression tree. It corresponds to
@@ -54,7 +53,7 @@ class WholeNumber: public ExprNode {
 public:
     explicit WholeNumber(Token token);
     void print() override;
-    int evaluate(SymTab &symTab) override;
+    TypeDescriptor *evaluate(SymTab &symTab) override;
 };
 
 // Variable is a leaf-node in an expression tree. It corresponds to
@@ -65,8 +64,28 @@ class Variable: public ExprNode {
 public:
     explicit Variable(Token token);
     void print() override;
-    int evaluate(SymTab &symTab) override;
+    TypeDescriptor *evaluate(SymTab &symTab) override;
 };
 
+class String : public ExprNode {
+    public:
+        explicit String(Token token);
+        void print() override;
+        TypeDescriptor *evaluate(SymTab & symTab) override;
+};
+
+class DoubleNumber : public ExprNode {
+    public:
+        explicit DoubleNumber(Token token);
+        void print() override;
+        TypeDescriptor *evaluate(SymTab & symTab) override; 
+};
+
+class Placeholder : public ExprNode {
+    public:
+        explicit Placeholder(Token token);
+        void print() override;
+        TypeDescriptor *evaluate(SymTab & symTab) override;
+};
 
 #endif //APYTHONINTERPRETER_ARITHEXPR_HPP
