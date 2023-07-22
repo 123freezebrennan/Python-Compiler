@@ -1,13 +1,10 @@
-//
-// Created by Ali Kooshesh on 4/4/23.
-//
-
 #ifndef APYTHONINTERPRETER_TOKENIZER_HPP
 #define APYTHONINTERPRETER_TOKENIZER_HPP
 
 
 #include <fstream>
 #include <vector>
+#include <stack>
 #include "Token.hpp"
 
 // sets up a vector of tokens and defines what the tokens are
@@ -23,6 +20,8 @@ public:
     // pretty explanatory
     void printProcessedTokens();
 
+    int getIndent();
+
 private:
     // used to determine if the last token is eof
     Token lastToken;
@@ -32,9 +31,14 @@ private:
     std::vector<Token> _tokens;
 
 private:
+    std::stack<int> indenter;
+    bool parsingANewLine;
+    
     std::string readName();
-    int readInteger();
+    std::string readInteger();
     std::string readRelationalOperator();
+    std::string readDashes();
+    std::string readString();
 };
 
 #endif //APYTHONINTERPRETER_TOKENIZER_HPP

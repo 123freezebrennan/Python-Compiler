@@ -29,6 +29,7 @@ public:
 
     void addStatement(Statement *statement);
     void evaluate(SymTab &symTab);
+    int getAmountOfStatements();
     void print();
 private:
     std::vector<Statement *> _statements;
@@ -58,16 +59,41 @@ private:
 class PrintStatement : public Statement {
     public:
         PrintStatement();
-
-        PrintStatement(std::string value);
-
+        PrintStatement(std::vector<ExprNode*> values){_values = values;};
         void print();
 
         void evaluate(SymTab &symTab);
-
     private:
-        std::string _value;
+        std::vector<ExprNode*> _values;
+
 };
+
+class Range {
+public:
+      Range(int rangeValue);  // set initValue to zero and stepValue to 1.
+      Range(int initValue, int rangeValue);  // set stepVlaue to 1.
+      Range(int initValue, int rangeValue, int stepValue);
+
+      bool condition(){
+        if (is_reverse)
+            return _initValue > _rangeValue;
+
+        else
+            return _initValue < _rangeValue;
+            
+        
+        }; // should we iterate?
+      int next() { _initValue += _stepValue; return _initValue;};       // the value to be assigned to the loop counter.
+      int getRange() {return _rangeValue;};
+      int getInit() {return _initValue;};
+      int getStep() {return _stepValue;};
+
+
+private:
+      int _initValue, _stepValue, _rangeValue;
+      bool is_reverse;
+};
+
 // Runs for loop of all needed values within the statement
 // if: _statements contains any statements, then those will run in a recursive manner.
 
@@ -75,22 +101,44 @@ class ForStatement : public Statement {
     public:
         ForStatement();
         
-        ForStatement(AssignmentStatement *firstAssign, AssignmentStatement *secondAssign, ExprNode *relExpr, 
-        
-        Statements *statements);
+        ForStatement(std::string, Range *range, Statements *statements);
 
         void print();
 
         void evaluate(SymTab & symTab);
 
     private:
-        AssignmentStatement *_firstAssign;
-        AssignmentStatement *_secondAssign;
-        ExprNode *_relExpr;
+        std::string _value;
+        Range *_range;
         Statements *_statements;  
 };
 
+class IfStatement: public Statement {
+    public:
+        IfStatement();
+        IfStatement(
+        ExprNode* test_if, 
+        Statements* suite_if, 
+        std::vector<ExprNode*> test_elifs, 
+        std::vector <Statements*> suite_elifs, 
+        bool is_elifs, 
+        Statements* suite_else, 
+        bool is_else);
+        
+        void print();
+        void evaluate(SymTab &symTab);
+        
+    private:
+        ExprNode *_test_if;
+        Statements* _suite_if;
 
+        std::vector<ExprNode*> _test_elifs;
+        std::vector <Statements*> _suite_elifs;
+        bool _is_elifs;
+
+        Statements* _suite_else;
+        bool _is_else;
+};
 
 
 
