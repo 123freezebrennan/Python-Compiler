@@ -1,7 +1,3 @@
-//
-// Created by Ali Kooshesh on 4/4/23.
-//
-
 
 #include<iostream>
 #include "ExprNode.hpp"
