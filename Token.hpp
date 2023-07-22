@@ -1,7 +1,3 @@
- //
-// Created by Ali Kooshesh on 4/4/23.
-//
-
 #ifndef APYTHONINTERPRETER_TOKEN_HPP
 #define APYTHONINTERPRETER_TOKEN_HPP
 

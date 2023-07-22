@@ -1,7 +1,3 @@
-//
-// Created by Ali Kooshesh on 4/4/23.
-//
-
 #ifndef APYTHONINTERPRETER_ARITHEXPR_HPP
 #define APYTHONINTERPRETER_ARITHEXPR_HPP
 

@@ -1,7 +1,3 @@
-//
-// Created by Ali Kooshesh on 4/4/23.
-//
-
 #ifndef APYTHONINTERPRETER_TOKENIZER_HPP
 #define APYTHONINTERPRETER_TOKENIZER_HPP
 

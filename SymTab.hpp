@@ -1,7 +1,3 @@
-//
-// Created by Ali Kooshesh on 4/4/23.
-//
-
 #ifndef APYTHONINTERPRETER_SYMTAB_HPP
 #define APYTHONINTERPRETER_SYMTAB_HPP
 

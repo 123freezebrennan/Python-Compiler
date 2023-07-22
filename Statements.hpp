@@ -1,7 +1,3 @@
-//
-// Created by Ali Kooshesh on 4/4/23.
-//
-
 #ifndef APYTHONINTERPRETER_STATEMENTS_HPP
 #define APYTHONINTERPRETER_STATEMENTS_HPP
 
