@@ -1,5 +1,3 @@
-// Created by Ali Kooshesh on 4/4/23.
-
 #ifndef APYTHONINTERPRETER_PARSER_HPP
 #define APYTHONINTERPRETER_PARSER_HPP
 

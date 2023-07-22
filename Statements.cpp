@@ -247,3 +247,5 @@ Range::Range(int initValue, int rangeValue, int stepValue){
 }
 
 
+
+}
