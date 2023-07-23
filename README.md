@@ -1,9 +1,7 @@
-# cs460PythonInterpreter Phase 3
+# Python-Compiler
+## A C++ Python Compiler that has type descriptors.
 
 # Authors:
     Brennan Freeze
-=======
-# Authors:
-    Brennan Freeze
-# Python-Compiler
-## A C++ Python Compiler that has type descriptors.
+
+
